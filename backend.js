@@ -165,8 +165,8 @@ app.get('/api/video/:id/:UUID', function (req, res) {
 	}
 });
 var server = app.listen(port, function () {
-	server.host = "9.9.9"
-	var host = server.address().address
-	var port = server.address().port
+	//server.host = "9.9.9"
+	var host = server.address().address;
+	var port = server.address().port;
 	console.log("App listening at http://%s:%s", host, port)
 })
