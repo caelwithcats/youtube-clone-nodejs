@@ -6,7 +6,7 @@ var multer = require('multer');
 var crypto = require('crypto');
 var cors = require('cors');
 var urlencodedParser =  bodyParser.urlencoded({extended: true});
-var port = 80;
+var port = 90;
 const fileUpload = require('express-fileupload');
 app.use('/static', express.static('static'));
 app.use('/raw_video', express.static('videos'));
