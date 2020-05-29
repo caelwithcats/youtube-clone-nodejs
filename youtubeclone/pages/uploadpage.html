@@ -1,0 +1,46 @@
+<head>
+<style>
+#search-bar{
+	height: 30px;
+}
+#search-button{
+	height: 26px;
+	width: 80px;
+	/* How dare you make me write colour "color" */
+	background-color: green;
+	color: white;
+}
+* {
+	font-family: ubuntu, segoe-ui, sans-serif;
+}
+</style>
+<script>
+	function fileOnChange() 
+	{
+		vidSize = document.getElementById("vid-upload").files[0].size;
+		vidSizeMB = (vidSize / (1024*1024)).toFixed(2)
+		if(vidSizeMB > 25){
+			document.getElementById("isVidOk").innerHTML = document.getElementById("vid-upload").files[0].name + " is aprox. " + vidSizeMB + "MB. This is a large file.";
+		}else{
+			document.getElementById("isVidOk").innerHTML = "";
+		}
+	}
+</script>
+</head>
+<body>
+<div class="top-search">
+	<input id="search-bar" type="text" placeholder="Search...">
+	<input id="search-button" type="button" value="Search">
+	<button style="float: right;">Upload a film</button>
+</div>
+<h2>Upload a video</h2>
+ 
+<form id="upload-form" action="/video-upload" enctype="multipart/form-data" method="POST">
+	<input type="file" name="video_source" id="video_source" onchange="fileOnChange()" id="vid-upload">
+	<p id="isVidOk" style="color: red;"></p>
+	<input type="text" name="video_name" placeholder="Enter video title here..." required>
+	<br><br>
+	<button type="submit">Submit</button>
+</form>
+
+</body>

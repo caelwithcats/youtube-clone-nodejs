@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+<style>
+.videos-container {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	grid-gap: 10px;
+	padding: 10px;
+}
+
+.videos-container > div {
+	/* I hate this. I don't want to write centre like that */
+	text-align: center;	
+	
+	font-family: ubuntu, segoe-ui, sans-serif;
+}
+.thumb {
+	height: 150px;
+}
+#search-bar{
+	height: 30px;
+}
+#search-button{
+	height: 26px;
+	width: 80px;
+	/* How dare you make me write colour "color" */
+	background-color: green;
+	color: white;
+}
+</style>
+<script>
+	let getJSONRequest  = new XMLHttpRequest();
+	getJSONRequest.open('GET', "/api");
+	getJSONRequest.responseType = "text";
+	getJSONRequest.onload = function() {
+		var data = getJSONRequest.response;
+		var videos = JSON.parse(data);
+		var videos_container = document.getElementById('videos-container');
+		var currentVideoHTML = "";
+		for(var i = 0; i < videos.total; i++){
+			currentVideoHTML += `<div>
+<img class="thumb" src="` + videos.videos[i].video_thumbnail + `"></img>
+<p onclick="window.location = '` + videos.videos[i].video_source + `'"` +  `>` + videos.videos[i].video_title + `</p>
+</div>`;
+		}
+		console.log(currentVideoHTML)
+		videos_container.innerHTML = currentVideoHTML;
+	}
+	getJSONRequest.send();
+</script>
+<title>YouTube clone</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+</head>
+<body>
+<div class="top-search">
+	<input id="search-bar" type="text" placeholder="Search...">
+	<input id="search-button" type="button" value="Search">
+	<button onclick="window.location.href='/upload'" style="float: right;">Upload a film</button>
+</div>
+<div class="videos-container" id="videos-container">
+		<!--<div>
+		<img class="thumb" src="./static/photos/img_forest.jpg"></img>
+		<p>The amazing video #1</p>
+		</div>
+		<div>
+		<img class="thumb" src="./static/photos/img_cat.jpg"></img>
+		<p>The amazing video #3</p>
+		</div>
+		<div>
+		<img class="thumb" src="./static/photos/img_cat2.jpg"></img>
+		<p>The amazing video #3</p>
+		</div>
+        <div>
+        <img class="thumb" src="./static/photos/img_forest.jpg"></img>
+        <p>The amazing video #1</p>
+        </div>
+        <div>
+        <img class="thumb" src="./static/photos/img_cat.jpg"></img>
+        <p>The amazing video #3</p>
+        </div>
+        <div>
+        <img class="thumb" src="./static/photos/img_cat2.jpg"></img>
+        <p>The amazing video #3</p>
+		</div>
+	-->
+
+</div>
+</body>
+<html>
