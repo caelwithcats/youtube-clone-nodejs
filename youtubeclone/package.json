@@ -4,7 +4,7 @@
   "description": "A youtube clone",
   "main": "backend.js",
   "scripts": {
-    "test": "backend.js"
+    "build": "backend.js"
   },
   "author": "CAEL RASMUSSEN",
   "license": "ISC",
