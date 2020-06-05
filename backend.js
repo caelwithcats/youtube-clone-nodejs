@@ -164,7 +164,7 @@ app.get('/api/video/:id/:UUID', function (req, res) {
 		res.send("Not Found")
 	}
 });
-var server = app.listen(function () {
+var server = app.listen(80, "127.0.0.1", function () {
 	//server.host = "9.9.9"
 	var host = server.address().address;
 	var port = server.address().port;
