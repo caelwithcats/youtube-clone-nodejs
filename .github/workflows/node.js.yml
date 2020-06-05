@@ -25,5 +25,4 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
-    - run: sudo npm run build --if-present
-    - run: curl http://127.0.0.1:80
+    - run: sudo npm run build --if-present & curl http://127.0.0.1:80
