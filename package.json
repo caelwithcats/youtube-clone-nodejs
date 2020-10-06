@@ -21,6 +21,6 @@
   },
   "devDependencies": {
     "media-thumbnail": "^1.0.0",
-    "uuid": "^8.3.0"
+    "uuid": "^8.3.1"
   }
 }
